@@ -1,0 +1,2 @@
+import immer from"immer";var Ob=function(e){var i=new Map;return i.state=immer(e,function(e){}),i.use=function(e,t,m){t={getMemo:t,memo:t(i.state),update:m};m.apply(void 0,t.memo),i.set(e,t)},i.next=function(a){i.forEach(function(e,t){if(document.body.contains(t)){i.state=immer(i.state,function(e){a(e)});for(var m=e.getMemo(i.state),o=!1,n=0;n<m.length;n++)if(m[n]!==e.memo[n]){o=!0;break}o&&(e.memo=m,e.update.apply(e,e.memo))}else i.delete(t)})},i};export{Ob};
+//# sourceMappingURL=index.js.map

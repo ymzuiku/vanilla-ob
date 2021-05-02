@@ -1,4 +1,5 @@
 import immer, { Draft } from "immer";
+import { onRemove } from "vanilla-life";
 
 export type IListenElement<T> = <M extends DynList>(
   element: Element,
@@ -22,17 +23,15 @@ export const Ob = <S extends object, V>(state: S): ObEvent<S, V> => {
   const ob = new Map() as ObEvent<S, V>;
   ob.state = immer(state, (v) => {});
   ob.use = (ele, getMemo, fn) => {
+    onRemove(ele, () => {
+      ob.delete(ele);
+    });
     const item = { getMemo, memo: getMemo(ob.state), update: fn };
     fn(...item.memo);
     ob.set(ele, item);
   };
   ob.next = (fn: (draft: Draft<S>) => any) => {
-    ob.forEach((item, ele) => {
-      if (!document.body.contains(ele)) {
-        ob.delete(ele);
-        return;
-      }
-
+    ob.forEach((item) => {
       ob.state = immer(ob.state, (draft) => {
         fn(draft);
       });

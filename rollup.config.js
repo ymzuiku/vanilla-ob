@@ -37,11 +37,10 @@ const watchOptions = [
     output: {
       file: './umd/index.js',
       format: 'umd',
-      name: 'vanillaMessage',
+      name: 'Ob',
       sourcemap: true,
       globals: {
-        immer: 'immer',
-        keyframesSpring: 'keyframes-spring',
+        immer: 'immer'
       },
     },
     plugins: [

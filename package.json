@@ -1,6 +1,6 @@
 {
   "name": "vanilla-ob",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "main": "es/index.js",
   "types": "lib/index.ts",
   "exports": {

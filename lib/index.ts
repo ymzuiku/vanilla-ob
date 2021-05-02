@@ -15,7 +15,7 @@ interface ObItem<S> {
 
 export interface ObEvent<S extends object, V> extends Map<Element, ObItem<S>> {
   state: S;
-  next: (fn: (draft: Draft<S>) => any) => void;
+  emit: (fn: (draft: Draft<S>) => any) => void;
   use: IListenElement<S>;
 }
 
@@ -30,7 +30,7 @@ export const Ob = <S extends object, V>(state: S): ObEvent<S, V> => {
     fn(...item.memo);
     ob.set(ele, item);
   };
-  ob.next = (fn: (draft: Draft<S>) => any) => {
+  ob.emit = (fn: (draft: Draft<S>) => any) => {
     ob.forEach((item) => {
       ob.state = immer(ob.state, (draft) => {
         fn(draft);

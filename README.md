@@ -31,7 +31,8 @@ ob.use(ele, (s)=>[s.name, s.list], [name, list]=>{
 // 也可以手动删除监听
 ob.delete(ele);
 
-ob.next(s=>{
+// 派发一次任务
+ob.emit(s=>{
   // 由于 ob 内部的state使用的是不可变对象，即便直接修改数组内容，也会认为对象已被修改
   s.list[0] = "dog";
 });

@@ -8,11 +8,11 @@ specifiers:
   rollup-plugin-uglify: ^6.0.3
   tslib: ^2.2.0
   typescript: ^4.2.4
-  vanilla-life: ^0.1.3
+  vanilla-life: ^0.1.4
 
 dependencies:
   immer: 9.0.2
-  vanilla-life: 0.1.3
+  vanilla-life: 0.1.4
 
 devDependencies:
   fs-extra: 9.1.0
@@ -329,6 +329,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /vanilla-life/0.1.3:
-    resolution: {integrity: sha512-D3pSWhrLt3KkZyOz2FN2wTA35Xd+eV2JHG3DIEuQzekfeQfULE3Rc6MfRq9axze8yxkGa/nkAYeSz66PrVb3Nw==}
+  /vanilla-life/0.1.4:
+    resolution: {integrity: sha512-UW9fFnraapMxV6nSyTIZAhwJsXD0JyKww0+2juVQrob4M0m/+a4lorvS3gG9mUgizAJEAnxJwQTTkwQz3rMaQA==}
     dev: false

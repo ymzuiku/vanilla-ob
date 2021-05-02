@@ -1,4 +1,4 @@
-# vanilla-message
+# vanilla-ob
 
 > Size < 1kb
 

@@ -1,8 +1,8 @@
 {
   "name": "vanilla-ob",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "umd/index.js",
-  "types": "umd/index.d.ts",
+  "types": "lib/index.ts",
   "exports": {
     "import": "./lib/index.ts"
   },

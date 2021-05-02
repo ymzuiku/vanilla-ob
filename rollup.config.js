@@ -44,9 +44,7 @@ const watchOptions = [
       },
     },
     plugins: [
-      rollupTypescript({
-        useTsconfigDeclarationDir: false,
-      }),
+      rollupTypescript(),
       uglify({
         sourcemap: true,
       }),

@@ -16,6 +16,7 @@ function clearDir(dir) {
     });
   }
 }
+
 function haveArgv(...args) {
   let isHave = false;
   args.forEach(str => {

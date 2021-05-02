@@ -11,7 +11,7 @@ $ npm install --save vanilla-ob
 ## Use
 
 ```js
-import Ob from "vanilla-ob";
+import { Ob } from "vanilla-ob";
 
 const ob = Ob({
   name: "dog",

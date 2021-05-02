@@ -1,6 +1,6 @@
 import immer, { Draft } from "immer";
 
-export type IListenElement<T> = <M extends ListItem>(
+export type IListenElement<T> = <M extends DynList>(
   element: Element,
   memo: (state: T) => M,
   update: (...nowMemo: M) => any
@@ -56,7 +56,7 @@ export const Ob = <S extends object, V>(state: S): ObEvent<S, V> => {
   return ob;
 };
 
-type ListItem =
+export type DynList =
   | []
   | [any]
   | [any, any]
@@ -72,41 +72,4 @@ type ListItem =
   | [any, any, any, any, any, any, any, any, any, any, any, any]
   | [any, any, any, any, any, any, any, any, any, any, any, any, any]
   | [any, any, any, any, any, any, any, any, any, any, any, any, any, any]
-  | [any, any, any, any, any, any, any, any, any, any, any, any, any, any, any]
-  | [
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any
-    ]
-  | [
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any
-    ];
+  | [any, any, any, any, any, any, any, any, any, any, any, any, any, any, any];

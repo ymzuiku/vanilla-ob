@@ -15,13 +15,13 @@ interface ObItem<S> {
 export interface ObEvent<S extends object, V> extends Map<Element, ObItem<S>> {
   state: S;
   next: (fn: (draft: Draft<S>) => any) => void;
-  on: IListenElement<S>;
+  use: IListenElement<S>;
 }
 
 export const Ob = <S extends object, V>(state: S): ObEvent<S, V> => {
   const ob = new Map() as ObEvent<S, V>;
   ob.state = immer(state, (v) => {});
-  ob.on = (ele, getMemo, fn) => {
+  ob.use = (ele, getMemo, fn) => {
     const item = { getMemo, memo: getMemo(ob.state), update: fn };
     fn(...item.memo);
     ob.set(ele, item);

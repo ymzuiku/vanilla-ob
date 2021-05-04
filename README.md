@@ -1,5 +1,13 @@
 # vanilla-ob
 
+【弃用】
+
+状态管理不应该和视图耦合。
+
+另一个库，immer-ob：和 vanilla-ob 相同实现，移除 DOM 相关的逻辑。
+
+请使用 immer-ob 配合 vanilla-life 完成相同目的。
+
 > Size < 1kb
 
 ## Install

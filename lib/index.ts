@@ -121,13 +121,13 @@ export const bindState = <T extends HTMLElement, K extends keyof T>(
   } else {
     if (isAttr(ele, key)) {
       setValue = () => {
-        Promise.resolve(fn()).then((v) => {
+        Promise.resolve(fn(ele)).then((v) => {
           ele.setAttribute(key as string, v);
         });
       };
     } else {
       setValue = () => {
-        Promise.resolve(fn()).then((v) => {
+        Promise.resolve(fn(ele)).then((v) => {
           if (typeof v === "object") {
             Object.assign(ele[key], v);
           } else {

@@ -1,14 +1,8 @@
 # vanilla-ob
 
-【弃用】
+为 Element 绑定动态属性，并且在有需要的时候进行更新，此库作为核心库使用在 [aoife](https://github.com/ymzuiku/aoife) 项目中
 
-状态管理不应该和视图耦合。
-
-另一个库，immer-ob：和 vanilla-ob 相同实现，移除 DOM 相关的逻辑。
-
-请使用 immer-ob 配合 vanilla-life 完成相同目的。
-
-> Size < 1kb
+> Gzip size < 1kb
 
 ## Install
 
@@ -19,31 +13,44 @@ $ npm install --save vanilla-ob
 ## Use
 
 ```js
-import { Ob } from "vanilla-ob";
+import { bindState, nextState } from "vanilla-ob";
 
-const ob = Ob({
+const state = {
   name: "dog",
-  list: ["name-a", "name-b"],
+  css: 'page-style'
   age: 20,
-});
+};
 
 const ele = document.createElement("div");
 
-// 监听 name 和 list, 仅当它任何一个有改变时，才会派发任务
-// 初始化时，必定会执行一次监听
-// 当 ele remove 之后，会自动取消监听
-ob.use(ele, (s)=>[s.name, s.list], [name, list]=>{
-  ele.textContent = name + list.join('-');
-});
+// 首先，绑定一些属性为动态属性
 
-// 也可以手动删除监听
-ob.delete(ele);
+// 绑定动态属性，例子1 普通绑定
+// 动态属性是一个函数，返回值会进行赋值
+bindState(ele, "textContent", () => state.name);
+bindState(ele, "className", () => state.css);
 
-// 派发一次任务
-ob.emit(s=>{
-  // 由于 ob 内部的state使用的是不可变对象，即便直接修改数组内容，也会认为对象已被修改
-  s.list[0] = "dog";
-});
+// 绑定动态属性，例子2 attribute 属性
+// 当属性发现有 '-' 字符，会使用 setAttribute 赋值
+bindState(ele, "data-name", ()=>"hello");
+
+// 绑定动态属性，例子3 赋值函数，可以返回 Promise
+bindState(ele, "data-list", () => fetch('/url').then(v=>v.text()));
+
+// 其次，选择一部分元素，让其重新更新自身的动态属性
+
+// 更新动态属性，例子1
+// 重新执行某个元素及其子元素的 bind 函数，用新的返回值赋值
+state.name = "world";
+nextState(ele);
+
+// 更新动态属性，例子2
+// 通过css选择器查找多个元素
+nextState(".page-style");
+
+// 更新动态属性，例子3
+// 使用第二个css选择器，忽略某些元素及其子元素的此次更新
+nextState(".page-style", ".ignore");
 
 document.body.append(ele);
 ```

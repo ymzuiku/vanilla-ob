@@ -117,7 +117,7 @@ export const bindState = <T extends HTMLElement, K extends keyof T>(
   let setValue: any;
   if (key === null) {
     // 若无key，直接记录fn
-    setValue = fn;
+    setValue = () => fn(ele);
   } else {
     if (isAttr(ele, key)) {
       setValue = () => {

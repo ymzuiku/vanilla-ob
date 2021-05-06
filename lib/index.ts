@@ -79,7 +79,6 @@ export const nextState = (
           }
         }
 
-        console.log("aaaaaa", (ele as any).__bindState);
         ((ele as any).__bindState as Map<string, Function>).forEach((fn) => {
           fn();
         });

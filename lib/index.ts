@@ -122,7 +122,9 @@ export const bindState = <T extends HTMLElement, K extends keyof T>(
     if (isAttr(ele, key)) {
       setValue = () => {
         Promise.resolve(fn(ele)).then((v) => {
-          ele.setAttribute(key as string, v);
+          if (ele.getAttribute(key as string) !== v) {
+            ele.setAttribute(key as string, v);
+          }
         });
       };
     } else {
@@ -131,7 +133,9 @@ export const bindState = <T extends HTMLElement, K extends keyof T>(
           if (typeof v === "object") {
             Object.assign(ele[key], v);
           } else {
-            ele[key] = v;
+            if (ele[key] !== v) {
+              ele[key] = v;
+            }
           }
         });
       };

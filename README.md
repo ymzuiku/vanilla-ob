@@ -52,5 +52,15 @@ nextState(".page-style");
 // 使用第二个css选择器，忽略某些元素及其子元素的此次更新
 nextState(".page-style", ".ignore");
 
+
+// 未有参数，更新所有
+nextState();
+
+// 未有参数，更新除 ignore 之外的元素
+nextState(null, ".ignore");
+
 document.body.append(ele);
+
+
+
 ```

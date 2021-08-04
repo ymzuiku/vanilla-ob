@@ -1,11 +1,10 @@
 {
   "name": "vanilla-ob",
-  "version": "0.3.7",
-  "main": "cjs/index.js",
+  "version": "0.3.8",
+  "main": "lib/index.js",
   "types": "lib/index.ts",
   "exports": {
-    "require": "./cjs/index.js",
-    "esm": "./lib/index.js"
+    "import": "./lib/index.ts"
   },
   "private": false,
   "scripts": {

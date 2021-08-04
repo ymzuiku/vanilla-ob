@@ -1,14 +1,17 @@
 {
   "name": "vanilla-ob",
-  "version": "0.3.6",
-  "main": "es/index.js",
+  "version": "0.3.7",
+  "main": "cjs/index.js",
   "types": "lib/index.ts",
   "exports": {
-    "import": "./lib/index.ts"
+    "require": "./cjs/index.js",
+    "esm": "./lib/index.js"
   },
   "private": false,
   "scripts": {
-    "es": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --target=es6  --bundle --external:querystring-number --format=esm --minify --splitting"
+    "esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --target=es6  --bundle --external:querystring-number --format=esm --minify --splitting",
+    "cjs": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=cjs --target=es6  --bundle --external:querystring-number --format=cjs --minify",
+    "lib": "npm run esm && npm run cjs"
   },
   "devDependencies": {
     "tslib": "^2.2.0",

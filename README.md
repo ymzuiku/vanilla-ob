@@ -13,7 +13,7 @@ $ npm install --save vanilla-ob
 ## Use
 
 ```js
-import { bindState, nextState } from "vanilla-ob";
+import { ob } from "vanilla-ob";
 
 const state = {
   name: "dog",
@@ -27,37 +27,37 @@ const ele = document.createElement("div");
 
 // 绑定动态属性，例子1 普通绑定
 // 动态属性是一个函数，返回值会进行赋值
-bindState(ele, "textContent", () => state.name);
-bindState(ele, "className", () => state.css);
+ob(ele, "textContent", () => state.name);
+ob(ele, "className", () => state.css);
 
 // 绑定动态属性，例子2 attribute 属性
 // 当属性发现有 '-' 字符，会使用 setAttribute 赋值
-bindState(ele, "data-name", ()=>"hello");
+ob(ele, "data-name", ()=>"hello");
 
 // 绑定动态属性，例子3 赋值函数，可以返回 Promise
-bindState(ele, "data-list", () => fetch('/url').then(v=>v.text()));
+ob(ele, "data-list", () => fetch('/url').then(v=>v.text()));
 
 // 其次，选择一部分元素，让其重新更新自身的动态属性
 
 // 更新动态属性，例子1
 // 重新执行某个元素及其子元素的 bind 函数，用新的返回值赋值
 state.name = "world";
-nextState(ele);
+ob.next(ele);
 
 // 更新动态属性，例子2
 // 通过css选择器查找多个元素
-nextState(".page-style");
+ob.next(".page-style");
 
 // 更新动态属性，例子3
 // 使用第二个css选择器，忽略某些元素及其子元素的此次更新
-nextState(".page-style", ".ignore");
+ob.next(".page-style", ".ignore");
 
 
 // 未有参数，更新所有
-nextState();
+ob.next();
 
 // 未有参数，更新除 ignore 之外的元素
-nextState(null, ".ignore");
+ob.next(null, ".ignore");
 
 document.body.append(ele);
 

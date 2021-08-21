@@ -46,7 +46,7 @@ function getElementList(targets?: string | HTMLElement | HTMLElement[]) {
   return list;
 }
 
-export const nextState = (
+const nextState = (
   focusUpdateTargets?: string | HTMLElement | HTMLElement[],
   ignoreUpdateTargets?: string | HTMLElement | HTMLElement[]
 ) => {
@@ -86,7 +86,7 @@ export const nextState = (
   }
 };
 
-export const bindState = <T extends HTMLElement, K extends keyof T>(
+export const ob = <T extends HTMLElement, K extends keyof T>(
   ele: T,
   key: K | null,
   fn: any
@@ -147,3 +147,5 @@ export const bindState = <T extends HTMLElement, K extends keyof T>(
     setValue
   );
 };
+
+ob.next = nextState;

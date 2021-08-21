@@ -1,5 +1,7 @@
 # vanilla-ob
 
+<img src="logo.svg" alt="logo">
+
 为 Element 绑定动态属性，并且在有需要的时候进行更新，此库作为核心库使用在 [aoife](https://github.com/ymzuiku/aoife) 项目中
 
 > Gzip size < 1kb

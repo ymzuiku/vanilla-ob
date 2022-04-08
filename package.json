@@ -13,8 +13,8 @@
     "lib": "npm run esm && npm run cjs"
   },
   "devDependencies": {
-    "tslib": "^2.2.0",
-    "typescript": "^4.2.4"
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.3"
   },
   "repository": {
     "type": "git",
